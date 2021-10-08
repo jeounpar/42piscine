@@ -28,10 +28,7 @@ void	ft_print_comb(void)
 	    while (c <= '9')
 	    {
 		ft_put3char(a, b, c);
-		if (a == '7' && b == '8' && c == '9')
-		{
-		}
-		else
+		if (a != '7' || b != '8' || c != '9')
 		{
 		    ft_putchar(',');
 		    ft_putchar(' ');
