@@ -6,7 +6,7 @@
 /*   By: marvin <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/11 16:39:46 by marvin            #+#    #+#             */
-/*   Updated: 2021/10/11 23:57:18 by jeounpar         ###   ########.fr       */
+/*   Updated: 2021/10/12 00:02:45 by jeounpar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include <stdio.h>
@@ -41,7 +41,7 @@ char	*ft_strcapitalize(char *str)
 
 int main(void)
 {
-	char str[] = "salut, Comment tu vas ? 42mots quarante-deux; cinquante+et+un";
+	char str[] = "saLUt, CoMMent TU VAS ? 42mOTs quaRANte-dEUX; cinqUANte+eT+UN";
 	char src[] = "Salut, Comment Tu Vas ? 42mots Quarante-Deux; Cinquante+Et+Un";
 	printf("%s\n", ft_strcapitalize(str));
 	printf("%s\n", src);
