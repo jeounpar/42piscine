@@ -1,26 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_rev_int_tab.c                                   :+:      :+:    :+:   */
+/*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jeounpar <jeounpar@student.42seoul.>       +#+  +:+       +#+        */
+/*   By: junhyuki <junhyuki@student.42seoul.kr      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/10/10 18:52:09 by jeounpar          #+#    #+#             */
-/*   Updated: 2021/10/12 11:48:19 by jeounpar         ###   ########.fr       */
+/*   Created: 2021/10/09 18:56:48 by junhyuki          #+#    #+#             */
+/*   Updated: 2021/10/10 16:06:10 by jeounpar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-void	ft_rev_int_tab(int *tab, int size)
-{
-	int	idx;
-	int	tmp;
+void	rush(int x, int y);
 
-	idx = 0;
-	while (idx < size / 2)
-	{
-		tmp = tab[idx];
-		tab[idx] = tab[size - 1 - idx];
-		tab[size - 1 - idx] = tmp;
-		idx++;
-	}
+int	main(void)
+{
+	rush(5, 5);
+	return (0);
 }

@@ -1,26 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_rev_int_tab.c                                   :+:      :+:    :+:   */
+/*   ft_print_memory.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jeounpar <jeounpar@student.42seoul.>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/10/10 18:52:09 by jeounpar          #+#    #+#             */
-/*   Updated: 2021/10/12 11:48:19 by jeounpar         ###   ########.fr       */
+/*   Created: 2021/10/12 17:08:29 by jeounpar          #+#    #+#             */
+/*   Updated: 2021/10/12 17:36:29 by jeounpar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-void	ft_rev_int_tab(int *tab, int size)
-{
-	int	idx;
-	int	tmp;
+#include <stdio.h>
 
-	idx = 0;
-	while (idx < size / 2)
-	{
-		tmp = tab[idx];
-		tab[idx] = tab[size - 1 - idx];
-		tab[size - 1 - idx] = tmp;
-		idx++;
-	}
+int main(void)
+{
+	char s[] = "a";
+	printf("%d\n", s);
 }
