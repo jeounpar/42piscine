@@ -6,7 +6,7 @@
 /*   By: marvin <@student.42seoul.kr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/15 23:29:07 by marvin            #+#    #+#             */
-/*   Updated: 2021/10/16 22:27:23 by jeounpar         ###   ########.fr       */
+/*   Updated: 2021/10/16 23:53:29 by jeounpar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ int	check_input(char *str, int max_num)
 			cnt++;
 		i++;
 	}
-	if (cnt != max_num * max_num)
+	if (cnt != max_num * 4)
 		return (0);
 	i = 0;
 	while (str[i] != '\0')

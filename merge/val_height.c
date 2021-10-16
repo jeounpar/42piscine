@@ -6,7 +6,7 @@
 /*   By: marvin <@student.42seoul.kr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/16 21:38:49 by marvin            #+#    #+#             */
-/*   Updated: 2021/10/16 22:45:40 by jeounpar         ###   ########.fr       */
+/*   Updated: 2021/10/16 23:31:06 by ibae             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ int	val_rowright(int **arr, int mx, int pos)
 	int	row;
 
 	row = 1;
-	while (row < mx)
+	while (row < mx + 1)
 	{
 		col = mx;
 		count = 0;
@@ -48,7 +48,7 @@ int	val_rowleft(int **arr, int mx, int pos)
 	int	row;
 
 	row = 1;
-	while (row < 5)
+	while (row < (mx + 1))
 	{
 		col = 1;
 		count = 0;
