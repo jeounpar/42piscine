@@ -11,7 +11,6 @@
 /* ************************************************************************** */
 
 #include "rush01.h"
-#include <stdio.h>
 
 int	val_all(int **arr, int mx, int pos)
 {
@@ -38,7 +37,6 @@ int	ft_solve(int **arr, int mx, int pos)
 
 	if (pos == mx * mx)
 	{
-		printf("1\n");
 		ft_print_solution(arr, mx);
 		return (1);
 	}
@@ -50,7 +48,6 @@ int	ft_solve(int **arr, int mx, int pos)
 		arr[x][y] = i;
 		if (val_all(arr, mx, pos))
 		{
-			printf("2\n");
 			if (ft_solve(arr, mx, pos + 1))
 				return (1);
 		}

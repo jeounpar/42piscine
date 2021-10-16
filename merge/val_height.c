@@ -53,7 +53,7 @@ int	val_rowleft(int **arr, int mx, int pos)
 		col = 1;
 		count = 0;
 		max = 0;
-		while (col < 5)
+		while (col < (mx + 1))
 		{
 			if (arr[row][col] > max)
 			{
@@ -77,12 +77,12 @@ int	val_colup(int **arr, int mx, int pos)
 	int	row;
 
 	col = 1;
-	while (col < 5)
+	while (col < (mx + 1))
 	{
 		row = 1;
 		count = 0;
 		max = 0;
-		while (row < 5)
+		while (row < (mx + 1))
 		{
 			if (arr[row][col] > max)
 			{
@@ -106,9 +106,9 @@ int	val_coldown(int **arr, int mx, int pos)
 	int	row;
 
 	col = 1;
-	while (col < 5)
+	while (col < (mx + 1))
 	{
-		row = 4;
+		row = mx;
 		count = 0;
 		max = 0;
 		while (row > 0)
