@@ -6,7 +6,7 @@
 /*   By: marvin <@student.42seoul.kr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/16 21:30:02 by marvin            #+#    #+#             */
-/*   Updated: 2021/10/16 22:18:36 by jeounpar         ###   ########.fr       */
+/*   Updated: 2021/10/16 22:30:03 by jeounpar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,12 +15,18 @@
 int	val_all(int **arr, int mx, int pos)
 {
 	if (!val_row(arr, mx) || !val_col(arr, mx)
-			|| !val_rowright(arr, mx, pos)
-			|| !val_rowleft(arr, mx, pos)
-			|| !val_coldown(arr, mx, pos)
-			|| !val_colup(arr, mx, pos))
-			return (0);
+		|| !val_rowright(arr, mx, pos)
+		|| !val_rowleft(arr, mx, pos)
+		|| !val_coldown(arr, mx, pos)
+		|| !val_colup(arr, mx, pos))
+		return (0);
 	return (1);
+}
+
+void	print_error(int pos)
+{
+	if (pos == 0)
+		write (1, "Error\n", 6);
 }
 
 int	ft_solve(int **arr, int mx, int pos)
@@ -47,8 +53,7 @@ int	ft_solve(int **arr, int mx, int pos)
 		}
 		i++;
 	}
-    if (pos == 0)
-		write (1, "Error\n", 6);
+	print_error(pos);
 	arr[x][y] = 0;
 	return (0);
 }
