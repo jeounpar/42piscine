@@ -12,40 +12,25 @@
 
 #include "rush01.h"
 
-void	ft_putchar(char c)
+void	ft_print_solution(int **arr, int mx)
 {
-	write(1, &c, 1);
-}
+	int	row;
+	int	col;
+	char c;
 
-void	ft_putstr(char	*str)
-{
-	int	i;
-
-	i = 0;
-	while (str[i])
+	row = 1;
+	while (row < mx + 1)
 	{
-		ft_putchar(str[i]);
-		i++;
-	}
-}
-
-void	ft_print_solution(int arr[6][6])
-{
-	int	i;
-	int	j;
-
-	i = 1;
-	while (i < 5)
-	{
-		j = 1;
-		while (j < 5)
+		col = 1;
+		while (col < mx + 1)
 		{
-			ft_putchar(arr[i][j] + '0');
-			if (j != 4)
-				ft_putchar(' ');
-			j++;
+			c = arr[row][col] + '0';
+			write (1, &c, 1);
+			if (col != mx)
+				write (1, " ", 1);
+			col++;
 		}
-		ft_putchar('\n');
-		i++;
+		write (1, "\n", 1);
+		row++;
 	}
 }

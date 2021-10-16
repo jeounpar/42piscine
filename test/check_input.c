@@ -12,26 +12,31 @@
 
 #include "rush01.h"
 
-bool	check_input(char *str, int max_num)
+int	check_input(char *str, int max_num)
 {
 	int		i;
+	int		cnt;
 	char	max_num_c;
 
 	i = 0;
+	cnt = 0;
 	max_num_c = max_num + '0';
 	while (str[i] != '\0')
+	{
+		if (str[i] >= '1' && str[i] <= '9')
+			cnt++;
 		i++;
-	if (i > (max_num * max_num * 2 - 1)
-		|| i < (max_num * max_num * 2 - 1))
-		return (false);
+	}
+	if (cnt != max_num * max_num)
+		return (0);
 	i = 0;
 	while (str[i] != '\0')
 	{
 		if (str[i] == ' ')
 			;
-		else if (str[i] < '0' || str[i] > '9' || str[i] > max_num_c)
-			return (false);
+		else if (str[i] < '1' || str[i] > '9' || str[i] > max_num_c)
+			return (0);
 		i++;
 	}
-	return (true);
+	return (1);
 }

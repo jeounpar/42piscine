@@ -31,7 +31,7 @@ void	wr_arr(int **arr, int *nums, int max_num)
 	while (i <= max_num)
 	{
 		arr[i][0] = nums[idx];
-		arr[i][5] = nums[idx + max_num];
+		arr[i][max_num + 1] = nums[idx + max_num];
 		i++;
 		idx++;
 	}

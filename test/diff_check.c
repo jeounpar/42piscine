@@ -12,22 +12,22 @@
 
 #include "rush01.h"
 
-int	ft_row_diff_check(int arr[6][6])
+int	val_row(int **arr, int mx)
 {
 	int	i;
 	int	j;
 	int	k;
 
 	i = 1;
-	while (i < 5)
+	while (i < mx + 1)
 	{
 		j = 1;
-		while (j < 5)
+		while (j < mx + 1)
 		{
 			if (arr[i][j] == 0)
 				return (1);
 			k = j + 1;
-			while (k < 5)
+			while (k < mx + 1)
 			{
 				if (arr[i][j] == arr[i][k])
 					return (0);
@@ -40,22 +40,22 @@ int	ft_row_diff_check(int arr[6][6])
 	return (1);
 }
 
-int	ft_col_diff_check(int arr[6][6])
+int	val_col(int **arr, int mx)
 {
 	int	i;
 	int	j;
 	int	k;
 
 	j = 1;
-	while (j < 5)
+	while (j < mx + 1)
 	{
 		i = 1;
-		while (i < 5)
+		while (i < mx + 1)
 		{
 			if (arr[i][j] == 0)
 				return(1);
 			k = i + 1;
-			while (k < 5)
+			while (k < mx + 1)
 			{
 				if (arr[i][j] == arr[k][j])
 					return (0);
