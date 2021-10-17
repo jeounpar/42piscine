@@ -6,7 +6,7 @@
 /*   By: marvin <@student.42seoul.kr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/15 21:00:42 by marvin            #+#    #+#             */
-/*   Updated: 2021/10/16 02:07:17 by marvin           ###   ########.fr       */
+/*   Updated: 2021/10/16 16:25:51 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,13 @@ int	main(int argc, char *argv[])
 		nums = get_nums(argv[1]);
 		arr = make_arr(max_num);
 		wr_arr(arr, nums, max_num);
+		ft_solve(arr, max_num, 0);
+		// for (int i = 0; i < max_num + 2; i++){
+		// 	for (int j = 0; j < max_num + 2; j++){
+		// 		printf("%d ", arr[i][j]);
+		// 	}
+		// 	printf("\n");
+		// }
 		free (nums);
 		free (arr);
 	}
