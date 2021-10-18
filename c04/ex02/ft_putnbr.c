@@ -6,7 +6,7 @@
 /*   By: jeounpar <jeounpar@student.42seoul.>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/13 19:16:34 by jeounpar          #+#    #+#             */
-/*   Updated: 2021/10/15 00:13:12 by jeounpar         ###   ########.fr       */
+/*   Updated: 2021/10/19 01:05:32 by jeounpar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,9 @@ void	ft_putnbr(int nb)
 		return ;
 	}
 	else
-		ft_putnbr(nb / 10);
-	ft_putnbr(nb % 10);
+	{
+		if (nb > 9)
+			ft_putnbr(nb / 10);
+		ft_putnbr(nb % 10);
+	}
 }
