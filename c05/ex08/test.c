@@ -1,4 +1,6 @@
 #include <unistd.h>
+#include <stdio.h>
+#include <time.h>
 
 int solve_10queens(int row);
 int g_arr[10][10] = { 0, };
@@ -79,4 +81,13 @@ int ft_ten_queens_puzzle(void)
     int ans;
     ans = solve_10queens(0);
     return (ans);
+}
+int main()
+{
+    double start, end;
+    start = (double)clock() / CLOCKS_PER_SEC;
+	ft_ten_queens_puzzle();
+    end = (double)clock() / CLOCKS_PER_SEC;
+    printf("%d\n", ft_ten_queens_puzzle());
+    printf("프로그램 수행 시간 :%lf\n", (end-start));
 }
