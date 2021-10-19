@@ -1,39 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putnbr.c                                        :+:      :+:    :+:   */
+/*   ft_putnbr_base.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jeounpar <jeounpar@student.42seoul.>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/10/13 19:16:34 by jeounpar          #+#    #+#             */
-/*   Updated: 2021/10/19 01:35:41 by jeounpar         ###   ########.fr       */
+/*   Created: 2021/10/15 00:18:34 by jeounpar          #+#    #+#             */
+/*   Updated: 2021/10/19 22:46:39 by jeounpar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <unistd.h>
+#include <stdio.h>
 
-void	ft_putchar(char c)
-{
-	write (1, &c, 1);
-}
+void	ft_putnbr_base(int nbr, char *base);
 
-void	ft_putnbr(int nb)
+int main(void)
 {
-	if (nb == -2147483648)
+	char base[] = "point.";
+	unsigned long c;
+
+	c = 0;
+	while (c < (sizeof(base) - 1))
 	{
-		ft_putnbr(nb / 10);
-		ft_putchar('8');
+		ft_putnbr_base(c, base);
+		c++;
 	}
-	else if (nb < 0)
+	c = 0;
+	while (c < (sizeof(base) - 1))
 	{
-		ft_putchar('-');
-		nb *= -1;
-		ft_putnbr(nb);
+		ft_putnbr_base(c, base);
+		c++;
 	}
-	else
-	{
-		if (nb > 9)
-			ft_putnbr(nb / 10);
-		ft_putchar(nb % 10 + '0');
-	}
+	printf("\n");
+	ft_putnbr_base(-1, base);
+	printf("\n");
 }

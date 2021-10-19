@@ -6,7 +6,7 @@
 /*   By: jeounpar <jeounpar@student.42seoul.>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/15 00:18:34 by jeounpar          #+#    #+#             */
-/*   Updated: 2021/10/19 00:14:39 by jeounpar         ###   ########.fr       */
+/*   Updated: 2021/10/19 22:34:25 by jeounpar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,14 +22,6 @@ int	ft_strlen(char *str)
 	return (i);
 }
 
-int	invalid_char(char c)
-{
-	if (c == ' ' || c == '\n' || c == '\t' || c == '\v'
-		|| c == '\f' || c == '\r' || c == '+' || c == '-')
-		return (1);
-	return (0);
-}
-
 int	valid_base(char *str)
 {
 	int	i;
@@ -40,7 +32,7 @@ int	valid_base(char *str)
 		return (0);
 	while (str[i] != '\0')
 	{
-		if (invalid_char(str[i]))
+		if (str[i] == '+' || str[i] == '-')
 			return (0);
 		i++;
 	}
@@ -61,10 +53,13 @@ int	valid_base(char *str)
 
 void	ft_putnbr_recur(int n, int len, char *base)
 {
+	char	c;
+
 	if (n == -2147483648)
 	{
 		ft_putnbr_recur(n / len, len, base);
-		write (1, &base[(n % len) * -1], 1);
+		c = base[(n % len) * -1];
+		write (1, &c, 1);
 		return ;
 	}
 	if (n < 0)
