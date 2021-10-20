@@ -39,47 +39,44 @@ int	ft_all_len(char **strs, int sep_size, int size)
 	return (len + sep_size * (size - 1) + 1);
 }
 
-char	*ft_strcpy(char *dest, char *src)
+char	*ft_strcat(char *dest, char *src)
 {
-	int	idx;
+	unsigned int	i;
+	unsigned int	j;
 
-	idx = 0;
-	while (src[idx] != '\0')
+	i = 0;
+	while (dest[i] != '\0')
+		i++;
+	j = 0;
+	while (src[j] != '\0')
 	{
-		dest[idx] = src[idx];
-		idx++;
+		dest[i] = src[j];
+		i++;
+		j++;
 	}
+	dest[i] = '\0';
 	return (dest);
 }
 
 char	*ft_join(int size, char **strs, char *sep, int len)
 {
 	char	*str;
-	char	*tmp;
 	int		i;
-	int		idx;
-	
+
 	i = 0;
 	str = (char *)malloc(len * sizeof(char));
-	if (str == NULL)
-		return (0);
+	if (size <= 0)
+	{
+		str = (char *)malloc(sizeof(char));
+		str[0] = '\0';
+		return (str);
+	}
+	str[0] = '\0';
 	while (i < size)
 	{
-		idx = 0;
-		tmp = strs[i];
-		while (tmp[idx] != '\0')
-		{
-			*str = tmp[idx];
-			idx++;
-			str++;
-		}
-		while (*sep != '\0')
-		{
-			*str = *sep;
-			str++;
-			sep++;
-		}
-		
+		ft_strcat(str, strs[i]);
+		if (i < size - 1)
+			ft_strcat(str, sep);
 		i++;
 	}
 	return (str);
