@@ -70,7 +70,7 @@ int	is_in_base(char c, char *base)
 			return (i);
 		i++;
 	}
-	return (0);
+	return (-1);
 }
 
 int	ft_atoi_base(char *str, char *base)
@@ -92,7 +92,7 @@ int	ft_atoi_base(char *str, char *base)
 		if (*str++ == '-')
 			neg *= -1;
 	num = is_in_base(*str, base);
-	while (num > 0)
+	while (num != -1)
 	{
 		result = result * len + num;
 		str++;
