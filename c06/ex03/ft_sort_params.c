@@ -12,33 +12,75 @@
 
 #include <unistd.h>
 
-void	ft_print(char *str)
+void	ft_print(int argc, char **argv)
 {
-	int	i;
+	int		i;
+	int		j;
+	char	*str;
 
-	i = 0;
-	while (str[i] != '\0')
+	i = 1;
+	while (i < argc)
 	{
-		write (1, &str[i], 1);
+		j = 0;
+		str = argv[i];
+		while (str[j] != '\0')
+		{
+			write (1, &str[j], 1);
+			j++;
+		}
+		write(1, "\n", 1);
 		i++;
 	}
 }
 
-int	main(int argc, char *argv[])
+void	ft_str_swap(char **a, char **b)
 {
-	int	idx[argc];
+	char	*tmp;
+
+	tmp = *b;
+	*b = *a;
+	*a = tmp;
+}
+
+int	ft_strcmp(char *s1, char *s2)
+{
 	int	i;
-	int	k;
+
+	i = 0;
+	while (s1[i] != '\0' || s2[i] != '\0')
+	{
+		if (s1[i] > s2[i])
+			return (s1[i] - s2[i] + 0);
+		else if (s1[i] < s2[i])
+			return (s1[i] - s2[i] + 0);
+		i++;
+	}
+	return (0);
+}
+
+void	ft_sort(int argc, char **argv)
+{
+	int	i;
+	int	j;
 
 	i = 1;
 	while (i < argc)
 	{
-		idx[i] = i;
+		j = i + 1;
+		while (j < argc)
+		{
+			if (ft_strcmp(argv[i], argv[j]) > 0)
+				ft_str_swap(&argv[i], &argv[j]);
+			j++;
+		}
 		i++;
 	}
-	i = 1;
-	while (i < argc)
-	{
-		k = i;
-	}
+}
+
+int	main(int argc, char **argv)
+{
+	if (argc > 2)
+		ft_sort(argc, argv);
+	ft_print(argc, argv);
+	return (0);
 }
