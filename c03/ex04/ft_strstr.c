@@ -1,26 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strcmp.c                                        :+:      :+:    :+:   */
+/*   ft_strstr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jeounpar <jeounpar@student.42seoul.>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/10/12 23:59:47 by jeounpar          #+#    #+#             */
-/*   Updated: 2021/10/13 11:15:57 by jeounpar         ###   ########.fr       */
+/*   Created: 2021/10/13 15:10:48 by jeounpar          #+#    #+#             */
+/*   Updated: 2021/10/13 15:10:58 by jeounpar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	ft_strcmp(char *s1, char *s2)
+char	*ft_strstr(char *str, char *to_find)
 {
-	int	i;
+	unsigned int	i;
+	unsigned int	j;
 
 	i = 0;
-	while (s1[i] != '\0' || s2[i] != '\0')
+	if (to_find[i] == '\0')
+		return (str);
+	while (str[i] != '\0')
 	{
-		if (s1[i] > s2[i])
-			return (s1[i] - s2[i] + 0);
-		else if (s1[i] < s2[i])
-			return (s1[i] - s2[i] + 0);
+		j = 0;
+		while (str[i + j] == to_find[j] && str[i + j] != '\0')
+		{
+			if (to_find[j + 1] == '\0')
+				return (&str[i]);
+			j++;
+		}
 		i++;
 	}
 	return (0);

@@ -1,27 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strcmp.c                                        :+:      :+:    :+:   */
+/*   ft_strncat.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jeounpar <jeounpar@student.42seoul.>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/10/12 23:59:47 by jeounpar          #+#    #+#             */
-/*   Updated: 2021/10/13 11:15:57 by jeounpar         ###   ########.fr       */
+/*   Created: 2021/10/13 14:16:10 by jeounpar          #+#    #+#             */
+/*   Updated: 2021/10/13 16:34:43 by jeounpar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	ft_strcmp(char *s1, char *s2)
+char	*ft_strncat(char *dest, char *src, unsigned int nb)
 {
-	int	i;
+	unsigned int	i;
+	unsigned int	j;
 
 	i = 0;
-	while (s1[i] != '\0' || s2[i] != '\0')
-	{
-		if (s1[i] > s2[i])
-			return (s1[i] - s2[i] + 0);
-		else if (s1[i] < s2[i])
-			return (s1[i] - s2[i] + 0);
+	while (dest[i] != '\0')
 		i++;
+	j = 0;
+	while (src[j] != '\0' && j < nb)
+	{
+		dest[i] = src[j];
+		i++;
+		j++;
 	}
-	return (0);
+	dest[i] = '\0';
+	return (dest);
 }
