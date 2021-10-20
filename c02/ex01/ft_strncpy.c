@@ -6,11 +6,9 @@
 /*   By: jeounpar <jeounpar@student.42seoul.>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/10 19:56:05 by jeounpar          #+#    #+#             */
-/*   Updated: 2021/10/10 20:08:40 by jeounpar         ###   ########.fr       */
+/*   Updated: 2021/10/12 21:26:11 by jeounpar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-#include <stdio.h>
-#include <string.h>
 
 char	*ft_strncpy(char *dest, char *src, unsigned int n)
 {

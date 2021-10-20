@@ -6,48 +6,38 @@
 /*   By: jeounpar <jeounpar@student.42seoul.>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/12 12:48:16 by jeounpar          #+#    #+#             */
-/*   Updated: 2021/10/12 17:08:58 by jeounpar         ###   ########.fr       */
+/*   Updated: 2021/10/14 15:53:50 by jeounpar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <unistd.h>
 
-void	print_16base(int mod)
-{
-	char	c;
+char	g_base_16[16] = "0123456789abcdef";
 
-	if (mod < 10)
-		c = mod + '0';
-	else
-		c = 'a' + mod - 10;
-	write (1, &"0", 1 );
-	write (1, &c, 1 );
+void	ft_putchar(char c)
+{
+	write (1, &c, 1);
 }
 
 void	ft_putstr_non_printable(char *str)
 {
-	int	i;
-	int	a;
-	int	mod;
+	int				i;
+	unsigned char	cur_str;
 
 	i = 0;
-	while (str[i] != '\0')
+	while (1)
 	{
-		if (str[i] < ' ' || str[i] > '~')
-		{
-			write (1, &"\\", 1);
-			a = str[i] - 0;
-			while (1)
-			{
-				mod = a % 16;
-				print_16base(mod);
-				a = a / 16;
-				if (a == 0)
-					break ;
-			}
-		}
+		cur_str = str[i];
+		if (cur_str == '\0')
+			break ;
+		if (cur_str >= 32 && cur_str <= 126)
+			ft_putchar(cur_str);
 		else
-			write (1, &str[i], 1);
+		{
+			ft_putchar('\\');
+			ft_putchar(g_base_16[cur_str / 16]);
+			ft_putchar(g_base_16[cur_str % 16]);
+		}
 		i++;
 	}
 }
