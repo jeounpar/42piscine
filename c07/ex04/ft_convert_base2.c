@@ -12,7 +12,6 @@
 
 #include <stdlib.h>
 #include <stdio.h>
-#include <stdbool.h>
 
 int	ft_strlen(char *str);
 int	valid_base(char *str, int len);
@@ -31,16 +30,16 @@ int	is_in_base(char c, char *base)
 	return (-1);
 }
 
-int	get_len(unsigned int n, char *base, int neg)
+int	get_len(int n, char *base)
 {
 	int	cnt;
-	int				len;
+	int	len;
 
 	cnt = 0;
 	len = ft_strlen(base);
-	if (neg)
+	if (n < 0)
 		cnt++;
-	while (true)
+	while (1)
 	{
 		cnt++;
 		if (n / len == 0)
@@ -50,31 +49,30 @@ int	get_len(unsigned int n, char *base, int neg)
 	return (cnt);
 }
 
-char	*ft_inchar(unsigned	int num, char *base_to, int neg)
+void	str_base_to(int n, char *base, int len, char *str)
 {
-	int		len;
-	int		i;
-	char	*str;
-	int		size;
+	int	i;
+	int	size;
+	int	neg;
+	int tmp;
 
-	size = get_len(num, base_to, neg);
-	len = ft_strlen(base_to);
-	str = (char *)malloc((size + 1) * sizeof(char));
-	if (str == NULL)
-		return (0);
 	i = 0;
-	if (neg)
+	neg = 1;
+	size = get_len(n, base);
+	if (n < 0)
 	{
+		neg = 0;
+		str[i] = '-';
 		i = 1;
-		str[0] = '-';
 	}
 	while (i < size)
 	{
-		printf("number : %d\n", num);
-		str[size - i - (!neg)] = base_to[num % len];
-		num /= len;
+		tmp = n % len;
+		if (tmp < 0)
+			tmp *= -1;
+		str[size - i - neg] = base[tmp];
+		n = n / len;
 		i++;
 	}
 	str[i] = '\0';
-	return (str);
 }

@@ -12,11 +12,10 @@
 
 #include <stdlib.h>
 #include <stdio.h>
-#include <stdbool.h>
 
 int		is_in_base(char c, char *base);
 int		get_len(int	n, char *base_to);
-char	*ft_inchar(int n, char *base_to, int neg);
+char	*str_base_to(int n, char *base, int size, char *str);
 
 int		ft_strlen(char *str)
 {
@@ -95,14 +94,19 @@ int	ft_atoi_base(char *str, char *base)
 
 char	*ft_convert_base(char *nbr, char *base_from, char *base_to)
 {
-	int	n;
-	int	neg;
+	int		n;
+	int		size;
+	int		len;
+	char	*str;
 
 	if (!valid_base(base_from, ft_strlen(base_from)) || !valid_base(base_to, ft_strlen(base_to)))
 		return (NULL);
 	n = ft_atoi_base(nbr, base_from);
-	neg = 0;
-	if (n < 0)
-		neg = 1;
-	return (ft_inchar(n, base_to, neg));
+	size = get_len(n, base_to);
+	len = ft_strlen(base_to);
+	str = (char *)malloc((size + 1) * sizeof(char));
+	if (str == NULL)
+		return (0);
+	str_base_to(n, base_to, len, str);
+	return (str);
 }
