@@ -11,27 +11,20 @@
 /* ************************************************************************** */
 
 #include <stdio.h>
+#include <unistd.h>
+#include <stdbool.h>
+#include <stdio.h>
+#include <limits.h>
 
 void	ft_putnbr_base(int nbr, char *base);
 
-int main(void)
+int		main(void)
 {
-	char base[] = "point.";
-	unsigned long c;
-
-	c = 0;
-	while (c < (sizeof(base) - 1))
-	{
-		ft_putnbr_base(c, base);
-		c++;
-	}
-	c = 0;
-	while (c < (sizeof(base) - 1))
-	{
-		ft_putnbr_base(c, base);
-		c++;
-	}
+	ft_putnbr_base(-123456, "01234567");
 	printf("\n");
-	ft_putnbr_base(-1, base);
+	fflush(stdout);
+	ft_putnbr_base(INT_MIN, "0123456789");
 	printf("\n");
+	fflush(stdout);
+	ft_putnbr_base(INT_MAX, "0123456789");
 }

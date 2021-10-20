@@ -54,11 +54,13 @@ int	valid_base(char *str)
 void	ft_putnbr_recur(int n, int len, char *base)
 {
 	char	c;
+	int		tmp;
 
 	if (n == -2147483648)
 	{
 		ft_putnbr_recur(n / len, len, base);
-		c = base[(n % len) * -1];
+		tmp = (n % len) * -1;
+		c = base[tmp];
 		write (1, &c, 1);
 		return ;
 	}
