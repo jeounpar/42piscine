@@ -54,7 +54,7 @@ void	str_base_to(int n, char *base, int len, char *str)
 	int	i;
 	int	size;
 	int	neg;
-	int tmp;
+	int	tmp;
 
 	i = 0;
 	neg = 1;

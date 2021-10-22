@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   ft_split.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jeounpar <jeounpar@student.42seoul.>       +#+  +:+       +#+        */
+/*   By: jeounpar <jeounpar@student.42seoul.kr      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/10/21 10:08:08 by jeounpar          #+#    #+#             */
-/*   Updated: 2021/10/21 10:08:11 by jeounpar         ###   ########.fr       */
+/*   Created: 2021/10/22 19:42:32 by jeounpar          #+#    #+#             */
+/*   Updated: 2021/10/22 19:42:34 by jeounpar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdlib.h>
 
-int	str_sep(char c, char *charset)
+int	is_ok(char c, char *charset)
 {
 	int	i;
 
@@ -23,12 +23,10 @@ int	str_sep(char c, char *charset)
 			return (1);
 		i++;
 	}
-	if (c == '\0')
-		return (1);
 	return (0);
 }
 
-int	str_count(char *str, char *cs)
+int	cnt_word(char *str, char *cset)
 {
 	int	i;
 	int	cnt;
@@ -37,63 +35,75 @@ int	str_count(char *str, char *cs)
 	cnt = 0;
 	while (str[i] != '\0')
 	{
-		if(str_sep(str[i + 1], cs)&& !str_sep(str[i], cs))
+		if (is_ok(str[i], cset) && !is_ok(str[i + 1], cset))
 			cnt++;
 		i++;
 	}
 	return (cnt);
 }
 
-void	wr_str(char *dest, char *str, char *charset, int st)
-{
-	int	i;
-
-	i = st;
-	while (sep_word(str[i], charset) == 0)
-	{
-		dest[i] = str[i];
-		i++;
-	}
-	dest[i] = '\0';
-}
-
-void	**wr_arr(char *str, char *charset, char **arr, int cnt)
+void	words_malloc(char *str, char *charset, char **words)
 {
 	int	i;
 	int	j;
-	int index;
+	int	idx;
 
 	i = 0;
-	index = 0;
+	j = 0;
+	idx = 0;
 	while (str[i] != '\0')
 	{
-		if (str_sep(str[i], charset))
-			i++;
-		else
+		if (!is_ok(str[i], charset))
 		{
-			j = 0;
-			while (!str_sep(str[i + j], charset))
-				j++;
-			arr[index] = (char *)malloc((j + 1) * sizeof(char));
-			if (arr[index] == NULL)
-				return (0);
-			wr_str(arr[index], str, charset, i);
-			i = i + j;
-			index++;
+			j++;
+			if (is_ok(str[i + 1], charset))
+			{
+				words[idx] = (char *)malloc((j + 1) * sizeof(char));
+				idx++;
+				j = 0;
+			}
 		}
+		i++;
+	}
+}
+
+void	wr_words(char *str, char *charset, char **words)
+{
+	int	i;
+	int	j;
+	int	idx;
+
+	i = 0;
+	j = 0;
+	idx = 0;
+	while (str[i] != '\0')
+	{
+		if (!is_ok(str[i], charset))
+		{
+			words[idx][j] = str[i];
+			j++;
+			if (is_ok(str[i + 1], charset))
+			{
+				words[idx][j] = '\0';
+				idx++;
+				j = 0;
+			}
+		}
+		i++;
 	}
 }
 
 char	**ft_split(char *str, char *charset)
 {
 	int		cnt;
-	char	**arr;
+	char	**words;
 
-	cnt = str_count(str, charset);
-	arr = (char **)malloc((cnt + 1) * sizeof(char));
-	if (arr == NULL)
-		return (0);
-	arr[cnt] = 0;
-	wr_arr(str, charset, arr, cnt);
-	return (arr);
+	cnt = cnt_word(str, charset);
+	words = (char **)malloc((cnt + 1) * sizeof(char));
+	if (words == NULL)
+		return (NULL);
+	words_malloc(str, charset, words);
+	wr_words(str, charset, words);
+	words[cnt] = 0;
+	return (words);
 }

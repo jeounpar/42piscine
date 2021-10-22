@@ -14,10 +14,10 @@
 #include <stdio.h>
 
 int		is_in_base(char c, char *base);
-int		get_len(int	n, char *base_to);
+int		get_len(int n, char *base_to);
 char	*str_base_to(int n, char *base, int size, char *str);
 
-int		ft_strlen(char *str)
+int	ft_strlen(char *str)
 {
 	int	i;
 
@@ -99,7 +99,8 @@ char	*ft_convert_base(char *nbr, char *base_from, char *base_to)
 	int		len;
 	char	*str;
 
-	if (!valid_base(base_from, ft_strlen(base_from)) || !valid_base(base_to, ft_strlen(base_to)))
+	if (!valid_base(base_from, ft_strlen(base_from))
+		|| !valid_base(base_to, ft_strlen(base_to)))
 		return (NULL);
 	n = ft_atoi_base(nbr, base_from);
 	size = get_len(n, base_to);
