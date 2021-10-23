@@ -28,25 +28,25 @@ int	is_ok(char c, char *charset)
 
 int		cnt_word(char *str, char *charset)
 {
-	int		cnt;
-	char	*pre;
+	int		count;
+	char	*previous;
 	char	*next;
 
-	cnt = 0;
-	pre = str;
+	count = 0;
+	previous = str;
 	next = str;
 	while (1)
 	{
 		if (is_ok(*str, charset))
 			next = str;
-		if (next - pre > 1)
-			cnt++;
+		if (next - previous > 1)
+			count++;
 		if (*str == '\0')
 			break ;
-		pre = next;
+		previous = next;
 		str++;
 	}
-	return (cnt);
+	return (count);
 }
 
 void	words_malloc(char *str, char *charset, char **words)
@@ -106,7 +106,7 @@ char	**ft_split(char *str, char *charset)
 	char	**words;
 
 	cnt = cnt_word(str, charset);
-	words = (char **)malloc((cnt + 1) * sizeof(char));
+	words = (char **)malloc((cnt + 1) * sizeof(char *));
 	if (words == NULL)
 		return (NULL);
 	words_malloc(str, charset, words);

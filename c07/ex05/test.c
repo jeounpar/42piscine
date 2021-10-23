@@ -107,7 +107,7 @@ char	**ft_split(char *str, char *charset)
 	char	**words;
 
 	cnt = cnt_word(str, charset);
-	words = (char **)malloc((cnt + 1) * sizeof(char));
+	words = (char **)malloc((cnt + 1) * sizeof(char *));
 	if (words == NULL)
 		return (NULL);
 	words_malloc(str, charset, words);
@@ -119,13 +119,12 @@ char	**ft_split(char *str, char *charset)
 
 int main(void)
 {
-	int i =0;
-	char **words;
-	words = ft_split("abcakaabcaakaabce", "bck");
-	while (words[i] != 0)
-	{
-		printf("%s\n", words[i]);
-		i++;
-	}
+	// int i = 0;
+	ft_split("Hello.,World,.!!KOKO!ZZZ.Hello.Good.World!KK!ZORO,Good,..", ",.!");
+	// while (words[i] != 0)
+	// {
+	// 	printf("%s\n", words[i]);
+	// 	i++;
+	// }
 	return (0);
 }
