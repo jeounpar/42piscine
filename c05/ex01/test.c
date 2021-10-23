@@ -11,6 +11,6 @@ int ft_recursive_factorial(int nb)
 }
 int main()
 {
-    printf("%d\n", ft_recursive_factorial(15));
+    printf("%d\n", ft_recursive_factorial(4));
     return 0;
 }

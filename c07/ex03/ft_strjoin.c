@@ -89,7 +89,13 @@ char	*ft_strjoin(int size, char **strs, char *sep)
 	char	*str;
 
 	if (size <= 0)
-		return ((char *)malloc(sizeof(char)));
+	{
+		str = (char *)malloc(sizeof(char));
+		if (str == NULL)
+			return (0);
+		str[0] = '\0';
+		return (str);
+	}
 	sep_size = ft_strlen(sep);
 	all_len = ft_all_len(strs, sep_size, size);
 	str = ft_join(size, strs, sep, all_len);
