@@ -26,18 +26,25 @@ int	is_ok(char c, char *charset)
 	return (0);
 }
 
-int	cnt_word(char *str, char *cset)
+int		cnt_word(char *str, char *charset)
 {
-	int	i;
-	int	cnt;
+	int		cnt;
+	char	*pre;
+	char	*next;
 
-	i = 0;
 	cnt = 0;
-	while (str[i] != '\0')
+	pre = str;
+	next = str;
+	while (1)
 	{
-		if (is_ok(str[i], cset) && !is_ok(str[i + 1], cset))
+		if (is_ok(*str, charset))
+			next = str;
+		if (next - pre > 1)
 			cnt++;
-		i++;
+		if (*str == '\0')
+			break ;
+		pre = next;
+		str++;
 	}
 	return (cnt);
 }
