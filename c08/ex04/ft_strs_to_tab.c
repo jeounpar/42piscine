@@ -6,7 +6,7 @@
 /*   By: jeounpar <jeounpar@student.42seoul.kr      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/23 19:05:44 by jeounpar          #+#    #+#             */
-/*   Updated: 2021/10/23 19:05:45 by jeounpar         ###   ########.fr       */
+/*   Updated: 2021/10/23 20:29:40 by jeounpar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,6 +61,7 @@ struct s_stock_str	*ft_strs_to_tab(int ac, char **av)
 		arr[i].size = ft_strlen(av[i]);
 		arr[i].str = av[i];
 		arr[i].copy = ft_strdup(av[i]);
+		i++;
 	}
 	arr[ac].str = 0;
 	return (arr);
