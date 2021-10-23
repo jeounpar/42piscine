@@ -1,6 +1,6 @@
 CC = gcc
 CFLAGS = -Wall -Wextra -Werror -c
-TARGET = libft.a
+NAME = libft.a
 SRCS = srcs/ft_putchar.c srcs/ft_swap.c srcs/ft_putstr.c srcs/ft_strlen.c srcs/ft_strcmp.c
 OBJECTS = $(SRCS:.c=.o)
 INC = includes/ft.h
@@ -8,11 +8,11 @@ INC = includes/ft.h
 .c.o:
 	$(CC) $(CFLAGS) -c $< -o $(<:.c=.o) -I $(INC)
 
-$(TARGET): $(OBJECTS)
+$(NAME): $(OBJECTS)
 	ar rc $@ $^
 	ranlib $@
 
-all: $(TARGET)
+all: $(NAME)
 
 clean:
 	rm -f $(OBJECTS)
