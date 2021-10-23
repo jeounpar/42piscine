@@ -6,7 +6,7 @@
 /*   By: jeounpar <jeounpar@student.42seoul.kr      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/23 20:21:34 by jeounpar          #+#    #+#             */
-/*   Updated: 2021/10/23 20:29:00 by jeounpar         ###   ########.fr       */
+/*   Updated: 2021/10/23 20:31:55 by jeounpar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,10 +59,11 @@ void	ft_show_tab(struct s_stock_str *par)
 	while (par[i].str)
 	{
 		ft_printstr(par[i].str);
-		ft_putchar("\n");
+		ft_putchar('\n');
 		ft_putnbr(par[i].size);
-		ft_putchar("\n");
+		ft_putchar('\n');
 		ft_printstr(par[i].copy);
-		ft_putchar("\n");
+		ft_putchar('\n');
+		i++;
 	}
 }
