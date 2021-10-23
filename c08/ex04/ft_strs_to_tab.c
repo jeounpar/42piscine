@@ -44,11 +44,14 @@ char	*ft_strdup(char *src)
 	return (tmp);
 }
 
+
 struct s_stock_str	*ft_strs_to_tab(int ac, char **av)
 {
 	int					i;
 	struct s_stock_str	*arr;
 
+	if(ac == 0)
+		return (NULL);
 	arr = malloc((ac + 1) * sizeof(struct s_stock_str));
 	if(arr == NULL)
 		return (NULL);
