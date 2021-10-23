@@ -6,7 +6,7 @@
 /*   By: jeounpar <jeounpar@student.42seoul.kr      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/22 19:42:32 by jeounpar          #+#    #+#             */
-/*   Updated: 2021/10/23 16:02:12 by jeounpar         ###   ########.fr       */
+/*   Updated: 2021/10/23 17:28:33 by jeounpar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,24 +26,25 @@ int	is_ok(char c, char *charset)
 	return (0);
 }
 
-
-int   cnt_word(char *str, char *charset)
+int	cnt_word(char *str, char *charset)
 {
-	int	count;
+	int	cnt;
+	int	i;
 
-	count = 0;
-	while (*str)
+	cnt = 0;
+	i = 0;
+	while (str[i] != '\0')
 	{
-		while (*str && (is_ok(*str, charset)))
-			str++;
-		if (*str && !(is_ok(*str, charset)))
+		while (str[i] != '\0' && (is_ok(str[i], charset)))
+			i++;
+		if (str[i] != '\0' && !(is_ok(str[i], charset)))
 		{
-			count++;
-			while (*str && !(is_ok(*str, charset)))
-				str++;
+			cnt++;
+			while (str[i] != '\0' && !(is_ok(str[i], charset)))
+				i++;
 		}
 	}
-	return (count);
+	return (cnt);
 }
 
 void	words_malloc(char *str, char *charset, char **words)
