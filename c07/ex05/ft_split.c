@@ -6,7 +6,7 @@
 /*   By: jeounpar <jeounpar@student.42seoul.kr      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/22 19:42:32 by jeounpar          #+#    #+#             */
-/*   Updated: 2021/10/22 19:42:34 by jeounpar         ###   ########.fr       */
+/*   Updated: 2021/10/23 16:02:12 by jeounpar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ int	is_ok(char c, char *charset)
 	i = 0;
 	while (charset[i] != '\0')
 	{
-		if (c == charset[i])
+		if (c == charset[i] || c == '\0')
 			return (1);
 		i++;
 	}
