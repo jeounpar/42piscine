@@ -6,7 +6,7 @@ OBJECTS = $(SRCS:.c=.o)
 INC = includes/ft.h
 
 .c.o:
-	$(CC) $(CFLAGS) -c $< -o $(<:.c=.o) -I $(INC)
+	$(CC) $(CFLAGS) $< -o $(<:.c=.o) -I $(INC)
 
 $(NAME): $(OBJECTS)
 	ar rc $@ $^
