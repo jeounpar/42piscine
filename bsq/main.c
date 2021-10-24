@@ -10,4 +10,17 @@
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "bsq.h"
+#include <stdio.h>
 
+int main(int argc, char **argv)
+{
+	char str[1000];
+
+	if (argc < 2)
+		read(0, str, 1000);
+	else
+	{
+		
+	}
+}

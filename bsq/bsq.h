@@ -17,6 +17,9 @@
 # include <unistd.h>
 # include <stdlib.h>
 
+int		ft_atoi(char *str, int *idx);
+void	ft_putstr(char *str);
+
 typedef struct	s_input{
 	int		line;
 	char	empty;
