@@ -111,7 +111,7 @@ void	ft_find_square(char **arr, t_info map_info)
 
 	square = (t_square){1, 0, 0};
 	y = 1;
-	print(arr, map_info);
+	// print(arr, map_info);
 	while (y < map_info.line)
 	{
 		x = 1;
@@ -123,9 +123,9 @@ void	ft_find_square(char **arr, t_info map_info)
 		}
 		y++;
 	}
-	print(arr, map_info);
+	// print(arr, map_info);
 	ft_find_biggest(arr, square, map_info);
-	print(arr, map_info);
+	// print(arr, map_info);
 	// y = 0;
 }
 
