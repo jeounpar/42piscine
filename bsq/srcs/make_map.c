@@ -11,7 +11,6 @@
 /* ************************************************************************** */
 
 #include "../includes/bsq.h"
-#include <stdio.h>
 
 char	**malloc_arr(int line, int row_szie)
 {
@@ -51,7 +50,6 @@ int	putin_char(char **arr, t_map *map, int fd)
 		else if (c == '\n')
 		{
 			arr[i][j] = '\0';
-			printf("%s\n", arr[i]);
 			i++;
 			j = 0;
 		}

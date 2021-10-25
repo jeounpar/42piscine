@@ -36,7 +36,7 @@ void	ft_make_answer_arr(char **arr, t_info map_info)
 	int	y;
 
 	y = 0;
-	while (arr[y] != 0)
+	while (y < map_info.line)
 	{
 		x = 0;
 		while (arr[y][x] != '\0')
@@ -57,7 +57,7 @@ void	ft_find_biggest(char **arr, t_square square, t_info map_info)
 	int	y;
 
 	y = 0;
-	while (arr[y] != 0)
+	while (y < map_info.line)
 	{
 		x = 0;
 		while (arr[y][x] != '\0')
@@ -112,20 +112,20 @@ void	ft_find_square(char **arr, t_info map_info)
 	square = (t_square){1, 0, 0};
 	y = 1;
 	print(arr, map_info);
-	// while (arr[y] != 0)
-	// {
-	// 	x = 1;
-	// 	while (arr[y][x] != '\0')
-	// 	{	
-	// 		if (arr[y][x] != 1)
-	// 			make_route(arr, x, y);
-	// 		x++;
-	// 	}
-	// 	y++;
-	// }
-	// print(arr);
-	// ft_find_biggest(arr, square, map_info);
-	// print(arr);
+	while (y < map_info.line)
+	{
+		x = 1;
+		while (arr[y][x] != '\0')
+		{	
+			if (arr[y][x] != 1)
+				make_route(arr, x, y);
+			x++;
+		}
+		y++;
+	}
+	print(arr, map_info);
+	ft_find_biggest(arr, square, map_info);
+	print(arr, map_info);
 	// y = 0;
 }
 
@@ -163,11 +163,6 @@ int main(int argc, char **argv)
 
 		ft_find_square(maps[i]->map, maps[i]->info);
 
-		printf("row_size = %d\n", maps[i]->info.row_size);
-		printf("line = %d\n", maps[i]->info.line);
-		printf("empty : %c\n", maps[i]->info.empty);
-		printf("obstacle : %c\n", maps[i]->info.obstacle);
-		printf("filled : %c\n", maps[i]->info.filled);
 		for (int x = 0; x < maps[i]->info.line; x++)
 			printf("%s\n",maps[i]->map[x]);
 
