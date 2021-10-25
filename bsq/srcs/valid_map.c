@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "bsq.h"
+#include "../includes/bsq.h"
 #include <stdio.h>
 
 int	row_size(char *filename, int row)

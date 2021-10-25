@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "bsq.h"
+#include "../includes/bsq.h"
 
 int	open_file(char *filename)
 {

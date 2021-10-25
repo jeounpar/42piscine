@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "bsq.h"
+#include "../includes/bsq.h"
 #include <stdio.h>
 
 void	first_line(t_map **arr, char *filename, int idx)

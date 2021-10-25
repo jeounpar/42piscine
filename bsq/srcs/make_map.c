@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "bsq.h"
+#include "../includes/bsq.h"
 #include <stdio.h>
 
 char	**malloc_arr(int line, int row_szie)
