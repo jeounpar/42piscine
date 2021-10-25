@@ -29,10 +29,12 @@ typedef struct	s_map{
 int		ft_atoi(char *str, int *idx);
 int		firstline_length(char *filename);
 int		row_size(char *filename, int len);
+int		open_file(char *filename);
+int		skip_fristline(int fd);
 void	ft_putchar(char c);
 void	ft_putstr(char *str);
 char	*read_firstline(char *filename, int len);
-char	**map_data(char *filename, int line, int row_size);
+char	**map_data(char *filename, t_map *map);
 void	pr_error(void);
 t_map	*init_map(char *str);
 

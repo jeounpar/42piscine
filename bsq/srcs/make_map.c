@@ -13,44 +13,60 @@
 #include "bsq.h"
 #include <stdio.h>
 
-char	**map_data(char *filename, int line, int row_size)
+char	**malloc_arr(int line, int row_szie)
 {
-	int		fd;
-	int		i;
-	int		j;
-	int		cnt;
 	char	**arr;
-	char	c;
+	int		i;
 
-	fd = open(filename, O_RDONLY);
-	if (fd == -1)
-		pr_error();
 	arr = (char **)malloc(line * sizeof(char *));
+	if (arr == NULL)
+		return (NULL);
 	i = 0;
 	while (i < line)
 	{
-		arr[i] = (char *)malloc((row_size + 1) * sizeof(char));
+		arr[i] = (char *)malloc((row_szie + 1) * sizeof(char));
 		i++;
 	}
-	while (read(fd, &c, 1))
-		if (c == '\n')
-			break;
-	while (read(fd, &c, 1))
-	{
-		ft_putchar(c);
-	}
-	
-	close(fd);
 	return (arr);
 }
 
-// t_map	*make_map(char *filename, int cnt)
-// {
-// 	t_map	*map;
-// 	char	**str;
+int	putin_char(char **arr, t_map *map, int fd)
+{
+	int		i;
+	int		j;
+	char	c;
 
-// 	map = malloc(sizeof(t_map));
-// 	if (map == NULL)
-// 		return (NULL);
-// 	map->row = cnt;
-// }
+	i = 0;
+	j = 0;
+	while (read(fd, &c, 1))
+	{
+		if (c != '\n')
+		{
+			if (c == map->obstacle)
+				arr[i][j] = '1';
+			else if (c == map->empty)
+				arr[i][j] = '2';
+			j++;
+		}
+		else if (c == '\n')
+		{
+			arr[i][j] = '\0';
+			i++;
+			j = 0;
+		}
+	}
+	return (fd);
+}
+
+char	**map_data(char *filename, t_map *map)
+{
+	int		fd;
+	char	**arr;
+
+	fd = open_file(filename);
+	arr = malloc_arr(map->line, map->row_size);
+	fd = skip_fristline(fd);
+	fd = putin_char(arr, map, fd);
+	close(fd);
+	return (arr);
+}
