@@ -17,18 +17,30 @@
 # include <unistd.h>
 # include <stdlib.h>
 
-typedef struct	s_map{
+typedef struct	s_info
+{
 	int		line;
+	int		row_size;
 	char	empty;
 	char	obstacle;
 	char	filled;
-	int		row_size;
+}	t_info;
+
+typedef struct	s_map{
 	char 	**map;
+	t_info	info;
 }	t_map;
+
+typedef struct	s_square
+{
+	int	max_size;
+	int	x_pos;
+	int	y_pos;
+}	t_square;
 
 int		ft_atoi(char *str, int *idx);
 int		firstline_length(char *filename);
-int		row_size(char *filename, int len);
+int		row_size(char *filename, int row);
 int		open_file(char *filename);
 int		skip_fristline(int fd);
 void	ft_putchar(char c);

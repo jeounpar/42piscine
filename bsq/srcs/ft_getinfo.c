@@ -66,10 +66,10 @@ t_map	*init_map(char *str)
 	if (arr == NULL)
 		return (NULL);
 	line = ft_atoi(str, &idx);
-	arr->line = line;
-	arr->empty = str[idx];
-	arr->obstacle = str[idx + 1];
-	arr->filled = str[idx + 2];
+	arr->info.line = line;
+	arr->info.empty = str[idx];
+	arr->info.obstacle = str[idx + 1];
+	arr->info.filled = str[idx + 2];
 	free(str);
 	return (arr);	
 }

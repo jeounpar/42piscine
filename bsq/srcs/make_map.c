@@ -42,15 +42,16 @@ int	putin_char(char **arr, t_map *map, int fd)
 	{
 		if (c != '\n')
 		{
-			if (c == map->obstacle)
-				arr[i][j] = '1';
-			else if (c == map->empty)
-				arr[i][j] = '2';
+			if (c == map->info.obstacle)
+				arr[i][j] = 1;
+			else if (c == map->info.empty)
+				arr[i][j] = 2;
 			j++;
 		}
 		else if (c == '\n')
 		{
 			arr[i][j] = '\0';
+			printf("%s\n", arr[i]);
 			i++;
 			j = 0;
 		}
@@ -64,7 +65,7 @@ char	**map_data(char *filename, t_map *map)
 	char	**arr;
 
 	fd = open_file(filename);
-	arr = malloc_arr(map->line, map->row_size);
+	arr = malloc_arr(map->info.line, map->info.row_size);
 	fd = skip_fristline(fd);
 	fd = putin_char(arr, map, fd);
 	close(fd);
