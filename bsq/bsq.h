@@ -17,14 +17,23 @@
 # include <unistd.h>
 # include <stdlib.h>
 
-int		ft_atoi(char *str, int *idx);
-void	ft_putstr(char *str);
-
-typedef struct	s_input{
+typedef struct	s_map{
 	int		line;
 	char	empty;
 	char	obstacle;
 	char	filled;
-}   t_input;
+	int		row_size;
+	char 	**map;
+}	t_map;
+
+int		ft_atoi(char *str, int *idx);
+int		firstline_length(char *filename);
+int		row_size(char *filename, int len);
+void	ft_putchar(char c);
+void	ft_putstr(char *str);
+char	*read_firstline(char *filename, int len);
+char	**map_data(char *filename, int line, int row_size);
+void	pr_error(void);
+t_map	*init_map(char *str);
 
 #endif

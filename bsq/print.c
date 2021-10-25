@@ -12,6 +12,11 @@
 
 #include "bsq.h"
 
+void	ft_putchar(char c)
+{
+	write (1, &c, 1);
+}
+
 void	ft_putstr(char *str)
 {
 	int	idx;
@@ -19,7 +24,7 @@ void	ft_putstr(char *str)
 	idx = 0;
 	while (str[idx] != '\0')
 	{
-		write (1, &str[idx], 1);
+		ft_putchar(str[idx]);
 		idx++;
 	}
 }
