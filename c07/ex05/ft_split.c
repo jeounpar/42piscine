@@ -17,6 +17,8 @@ int	is_ok(char c, char *charset)
 	int	i;
 
 	i = 0;
+	if (c == '\0')
+		return (1);
 	while (charset[i] != '\0')
 	{
 		if (c == charset[i] || c == '\0')
