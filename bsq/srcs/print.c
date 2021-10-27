@@ -28,3 +28,16 @@ void	ft_putstr(char *str)
 		idx++;
 	}
 }
+
+void	ft_printmap(t_map *arr)
+{
+	int	i;
+
+	i = 0;
+	while (i < arr->info.line)
+	{
+		ft_putstr(arr->map[i]);
+		ft_putchar('\n');
+		i++;
+	}
+}

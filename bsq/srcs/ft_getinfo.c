@@ -12,24 +12,20 @@
 
 #include "../includes/bsq.h"
 
-int	firstline_length(char *filename)
+int	firstline_length(int fd)
 {
-	int		fd;
-	int		len;
+	int		n;
 	char	c;
 
-	fd = open(filename, O_RDONLY);
-	if (fd == -1)
-		pr_error();
-	len = 0;
+	n = 0;
 	while (read(fd, &c, 1))
 	{
 		if (c == '\n')
 			break ;
-		len++;
+		n++;
 	}
 	close(fd);
-	return (len);
+	return (n);
 }
 
 char	*read_firstline(char *filename, int len)
@@ -40,8 +36,6 @@ char	*read_firstline(char *filename, int len)
 	char	*str;
 
 	fd = open(filename, O_RDONLY);
-	if (fd == -1)
-		pr_error();
 	str = malloc((len + 1) * sizeof(char));
 	i = 0;
 	while (read(fd, &c, 1))
@@ -70,6 +64,6 @@ t_map	*init_map(char *str)
 	arr->info.empty = str[idx];
 	arr->info.obstacle = str[idx + 1];
 	arr->info.filled = str[idx + 2];
-	free(str);
-	return (arr);	
+	free (str);
+	return (arr);
 }
