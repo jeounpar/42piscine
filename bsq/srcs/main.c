@@ -6,7 +6,7 @@
 /*   By: jeounpar <jeounpar@student.42seoul.>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/24 19:18:33 by jeounpar          #+#    #+#             */
-/*   Updated: 2021/10/26 11:10:21 by ibae             ###   ########.fr       */
+/*   Updated: 2021/10/27 15:05:06 by jeounpar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,25 +15,13 @@
 
 void    ft_stdin(void)
 {
-    // char    c;
-    // int     fd;
+    char    c;
+    int     fd;
 
-    // fd = open("parkbae", O_WRONLY | O_CREAT | O_TRUNC, 0644);
-	// while (read(0, &c, 1))
-	// {
-	// 	write(fd, &c, 1);
-	// }
-	// fd = close(fd);
-	int		ret;
-	char	*buf;
-	int		fd;
-
-	fd = open("./std_input.txt", O_RDWR | O_CREAT, 0644);
-	buf = (char*)malloc(51 * sizeof(char));
-	while ((ret = read(0, buf, 50)))
-		write(fd, buf, ret);
-	close(fd);
-	free(buf);
+    fd = open("parkbae.file", O_WRONLY | O_CREAT | O_TRUNC, 0777);
+	while (read(0, &c, 1))
+		write(fd, &c, 1);
+	fd = close(fd);
 }
 
 int	main(int argc, char **argv)
@@ -43,13 +31,17 @@ int	main(int argc, char **argv)
 	int		i;
 
 	i = 0;
-	if (argc < 2)
-		ft_stdin();
-	else
-		maps = (t_map **)malloc((argc - 1) * sizeof(t_map *));
-	while (argc >= 2 && i < argc - 1)
+	if (argc == 1)
 	{
-		filename = argv[i + 1];
+		ft_stdin();
+		filename = "parkbae.file";
+		argc++;
+	}
+	maps = (t_map **)malloc((argc - 1) * sizeof(t_map *));
+	while (i < argc - 1)
+	{
+		if (argc != 2)
+			filename = argv[i + 1];
 		if (first_line(maps, filename, i) != -1)
 		{
 			maps[i]->map = map_data(filename, maps[i]);
