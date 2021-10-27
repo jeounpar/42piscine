@@ -62,7 +62,7 @@ char	**map_data(char *filename, t_map *map)
 	int		fd;
 	char	**arr;
 
-	fd = open_file(filename);
+	fd = open(filename, O_RDONLY);
 	arr = malloc_arr(map->info.line, map->info.row_size);
 	fd = skip_fristline(fd);
 	fd = putin_char(arr, map, fd);

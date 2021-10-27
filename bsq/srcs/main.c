@@ -11,7 +11,6 @@
 /* ************************************************************************** */
 
 #include "../includes/bsq.h"
-#include <stdio.h>
 
 void    ft_stdin(void)
 {
@@ -24,39 +23,30 @@ void    ft_stdin(void)
 	fd = close(fd);
 }
 
-void	ft_test(void)
+void	ft_std_solve(void)
 {
 	t_map	**maps;
 	char	*filename;
-	int		i;
 	
 	ft_stdin();
 	filename = "parkbae.file";
-	i = 0;
 	maps = (t_map **)malloc(sizeof(t_map *));
-	if (first_line(maps, filename, i) != -1)
+	if (first_line(maps, filename, 0) != -1)
 		{
-			maps[i]->map = map_data(filename, maps[i]);
-			ft_find_square(maps[i]->map, maps[i]->info);
-			for (int x = 0; x < maps[i]->info.line; x++)
-				printf("%s\n",maps[i]->map[x]);
+			maps[0]->map = map_data(filename, maps[0]);
+			ft_find_square(maps[0]->map, maps[0]->info);
+			ft_printmap(maps[0]);
 		}
 	else
 		ft_putstr("map error\n");
-	i++;
 }
 
-int	main(int argc, char **argv)
+void	ft_nostd_solve(t_map **maps, int argc, char **argv)
 {
-	t_map	**maps;
-	char	*filename;
 	int		i;
+	char	*filename;
 
 	i = 0;
-	if (argc == 1)
-		ft_test();
-	else
-		maps = (t_map **)malloc((argc - 1) * sizeof(t_map *));
 	while (i < argc - 1)
 	{
 		filename = argv[i + 1];
@@ -64,12 +54,26 @@ int	main(int argc, char **argv)
 		{
 			maps[i]->map = map_data(filename, maps[i]);
 			ft_find_square(maps[i]->map, maps[i]->info);
-			for (int x = 0; x < maps[i]->info.line; x++)
-				printf("%s\n",maps[i]->map[x]);
+			ft_printmap(maps[i]);
 		}
 		else
 			ft_putstr("map error\n");
 		i++;
+	}
+}
+
+int	main(int argc, char **argv)
+{
+	t_map	**maps;
+
+	if (argc == 1)
+		ft_std_solve();
+	else
+	{
+		maps = (t_map **)malloc((argc - 1) * sizeof(t_map *));
+		if (maps == NULL)
+			return (0);
+		ft_nostd_solve(maps, argc, argv);
 	}
 	return (0);
 }

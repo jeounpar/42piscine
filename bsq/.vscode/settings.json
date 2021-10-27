@@ -1,5 +1,6 @@
 {
   "files.associations": {
     "limits": "c"
-  }
+  },
+  "editor.fontSize": 16
 }

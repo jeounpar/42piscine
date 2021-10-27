@@ -11,3 +11,16 @@
 /* ************************************************************************** */
 
 #include "../includes/bsq.h"
+
+void	alloc_free(t_map **maps)
+{
+	int	i;
+
+	i = 0;
+	while (i < maps[i]->info.line)
+	{
+		free(maps[i]->map[i]);
+		i++;
+	}
+	free(maps);
+}

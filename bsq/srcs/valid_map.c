@@ -66,6 +66,7 @@ int	first_line(t_map **arr, char *filename, int idx)
 {
 	int		len;
 	int		fd;
+	int		tmp;
 	char	*firstline_data;
 
 	fd = open(filename, O_RDONLY);
@@ -73,6 +74,9 @@ int	first_line(t_map **arr, char *filename, int idx)
 		return (-1);	
 	len = firstline_length(fd);
 	firstline_data = read_firstline(filename, len);
+	ft_atoi(firstline_data, &tmp);
+	if (len - tmp < 3)
+		return (-1);
 	if (firstline_data[0] == '\0') //첫번째 행에 어떠한 문자도 없을 때
 		return (-1);
 	arr[idx] = init_map(firstline_data);

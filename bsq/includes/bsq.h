@@ -48,9 +48,9 @@ void	ft_putchar(char c);
 void	ft_putstr(char *str);
 void	ft_find_square(char **arr, t_info map_info);
 void	ft_printmap(t_map *arr);
+void	alloc_free(t_map **maps);
 char	*read_firstline(char *filename, int len);
 char	**map_data(char *filename, t_map *map);
-void	pr_error(void);
 t_map	*init_map(char *str);
 
 #endif

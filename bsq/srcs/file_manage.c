@@ -18,7 +18,7 @@ int	open_file(char *filename)
 
 	fd = open(filename, O_RDONLY);
 	if (fd == -1)
-		pr_error();
+		return (-1);
 	return (fd);
 }
 
