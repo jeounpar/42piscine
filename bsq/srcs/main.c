@@ -24,6 +24,28 @@ void    ft_stdin(void)
 	fd = close(fd);
 }
 
+void	ft_test(void)
+{
+	t_map	**maps;
+	char	*filename;
+	int		i;
+	
+	ft_stdin();
+	filename = "parkbae.file";
+	i = 0;
+	maps = (t_map **)malloc(sizeof(t_map *));
+	if (first_line(maps, filename, i) != -1)
+		{
+			maps[i]->map = map_data(filename, maps[i]);
+			ft_find_square(maps[i]->map, maps[i]->info);
+			for (int x = 0; x < maps[i]->info.line; x++)
+				printf("%s\n",maps[i]->map[x]);
+		}
+	else
+		ft_putstr("map error\n");
+	i++;
+}
+
 int	main(int argc, char **argv)
 {
 	t_map	**maps;
@@ -32,16 +54,12 @@ int	main(int argc, char **argv)
 
 	i = 0;
 	if (argc == 1)
-	{
-		ft_stdin();
-		filename = "parkbae.file";
-		argc++;
-	}
-	maps = (t_map **)malloc((argc - 1) * sizeof(t_map *));
+		ft_test();
+	else
+		maps = (t_map **)malloc((argc - 1) * sizeof(t_map *));
 	while (i < argc - 1)
 	{
-		if (argc != 2)
-			filename = argv[i + 1];
+		filename = argv[i + 1];
 		if (first_line(maps, filename, i) != -1)
 		{
 			maps[i]->map = map_data(filename, maps[i]);
