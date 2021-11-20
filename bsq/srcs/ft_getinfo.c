@@ -37,6 +37,8 @@ char	*read_firstline(char *filename, int len)
 
 	fd = open(filename, O_RDONLY);
 	str = malloc((len + 1) * sizeof(char));
+	if (str == NULL)
+		exit (1);
 	i = 0;
 	while (read(fd, &c, 1))
 	{
@@ -50,7 +52,7 @@ char	*read_firstline(char *filename, int len)
 	return (str);
 }
 
-t_map	*init_map(char *str)
+t_map	*init_map(char *str, int len)
 {
 	t_map	*arr;
 	int		line;
@@ -58,8 +60,8 @@ t_map	*init_map(char *str)
 
 	arr = malloc(sizeof(t_map));
 	if (arr == NULL)
-		return (NULL);
-	line = ft_atoi(str, &idx);
+		exit (1);
+	line = ft_atoi(str, &idx, len);
 	arr->info.line = line;
 	arr->info.empty = str[idx];
 	arr->info.obstacle = str[idx + 1];

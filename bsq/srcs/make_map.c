@@ -6,7 +6,7 @@
 /*   By: jeounpar <jeounpar@student.42seoul.>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/24 18:59:54 by jeounpar          #+#    #+#             */
-/*   Updated: 2021/10/24 19:11:29 by jeounpar         ###   ########.fr       */
+/*   Updated: 2021/10/27 16:34:09 by ibae             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,11 +19,13 @@ char	**malloc_arr(int line, int row_szie)
 
 	arr = (char **)malloc(line * sizeof(char *));
 	if (arr == NULL)
-		return (NULL);
+		exit (1);
 	i = 0;
 	while (i < line)
 	{
 		arr[i] = (char *)malloc((row_szie + 1) * sizeof(char));
+		if (arr[i] == NULL)
+			exit (1);
 		i++;
 	}
 	return (arr);
@@ -42,9 +44,9 @@ int	putin_char(char **arr, t_map *map, int fd)
 		if (c != '\n')
 		{
 			if (c == map->info.obstacle)
-				arr[i][j] = 1;
+				arr[i][j] = map->info.obstacle;
 			else if (c == map->info.empty)
-				arr[i][j] = 2;
+				arr[i][j] = map->info.empty;
 			j++;
 		}
 		else if (c == '\n')
